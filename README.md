@@ -1,6 +1,20 @@
 # Avatar: The Last AirBender - Object-Oriented Programming Lab :fire: :ocean: :rock: :tornado:
 
-## Goals
+## Avatar: The Last AirBender - Object-Oriented Programming Lab
+
+### Preview
+
+Dive into the world of Avatar: The Last AirBender and learn Object-Oriented Programming (OOP) through elemental bending! Create classes for Waterbending, Firebending, Earthbending, and Airbending, each with unique abilities. Your journey will involve mastering Python OOP concepts and passing tests inspired by this beloved series.
+
+### The Elements
+
+1. **Water Bending**: Emulate Katara's fluidity.
+2. **Earth Bending**: Channel Toph's strength.
+3. **Fire Bending**: Harness Ozai's intensity.
+4. **Air Bending**: Embrace Aang's peaceful power.
+
+
+### Learning Goals
 
 - Create and instantiate classes in Python.
 - Build methods that perform functions tailored to their unique objects.
@@ -9,7 +23,7 @@
 
 ***
 
-## Key Vocab
+### Key Vocab
 
 - **Class**: a bundle of data and functionality. Can be copied and modified to
 accomplish a wide variety of programming tasks.
@@ -33,51 +47,6 @@ methods** (for **double** **underscore**).
 - **Property**: attributes that are controlled by methods.
 
 ***
-
-## Introduction
-
-Object-oriented programming, or OOP, is an extremely useful programming paradigm
-in which we can organize our code according to how real-world objects might
-interact with one another. We can wrap properties/data and behavior up in
-classes, and then create instances, or individual "members", of those classes
-that can interact with one another.
-
-One common misconception about OOP is that everything MUST model the _real
-world_. If we limit our objects to things in the real world, the limitations
-will start jumping out at us.
-
-Imagine a phone call between 2 people. Sure, the PEOPLE are real, but what about
-the phone call? If we think about the phone call through OOP, we can model it
-too! A phone call has a `caller` and a `receiver`, a `duration`, and maybe even a
-`cost_per_minute`. In the _real world_, it's not a real thing, but in OOP IT IS!
-
-In this lab, you will put together everything you've learned so far about Object
-Orientation in Python. You will be building out classes for Water, Earth, Fire, and Airbending, each with unique abilities.
-
-***
-
-## Avatar: The Last AirBender - Object-Oriented Programming Lab
-
-### Preview
-
-Dive into the world of Avatar: The Last AirBender and learn Object-Oriented Programming (OOP) through elemental bending! Create classes for Waterbending, Firebending, Earthbending, and Airbending, each with unique abilities. Your journey will involve mastering Python OOP concepts and passing tests inspired by this beloved series.
-
-### The Elements
-
-1. **Water Bending**: Emulate Katara's fluidity.
-2. **Earth Bending**: Channel Toph's strength.
-3. **Fire Bending**: Harness Ozai's intensity.
-4. **Air Bending**: Embrace Aang's peaceful power.
-
-### Your Quest
-
-Your quest is to pass coding challenges, create classes, and implement methods to mimic bending abilities. Follow test-driven development, and enhance your classes with creative features to master the art of OOP in the Avatar world.
-
-### Learning Goals
-
-- Create and instantiate classes in Python.
-- Develop methods tailored to their unique objects.
-- Utilize the `property()` function to create properties and validate input.
 
 ### The Avatar World
 
