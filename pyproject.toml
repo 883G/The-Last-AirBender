@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "tlab"
+version = "0.1.0"
+description = "Explore OOP with elemental bending in \"Avatar: The Last AirBender.\" Create Python classes, emulate Water, Earth, Fire, and Airbenders, and pass challenges inspired by the series. Test-driven development and creative features make this lab an exciting coding adventure!"
+authors = ["Avihai Shalom <avihais12344@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
