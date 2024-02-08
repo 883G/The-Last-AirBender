@@ -14,6 +14,7 @@ ignore = [
     "N999", # invalid-module-name (The Last Airbender is not a valid module name).
     "D",    # pydocstyle (All the missing docs).
     "CPY",  # flake8-copyright (Missing copyright declarations).
+    "EM", # flake8-errmsg (Unecessary headech).
 ]
 
 # Enable preview features.
