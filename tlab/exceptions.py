@@ -1,6 +1,6 @@
-class InvalidPowerValue(ValueError):
+class InvalidPowerValueError(ValueError):
     pass
 
 
-class InvalidPowerType(TypeError):
+class InvalidPowerTypeError(TypeError):
     pass
