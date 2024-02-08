@@ -1,0 +1,36 @@
+respect-gitignore = true
+show-fixes = true
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+target-version = "py311"
+
+[lint]
+# Check all of the rules.
+select = ["ALL"]
+ignore = [
+    "N999", # invalid-module-name (The Last Airbender is not a valid module name).
+    "D", # pydocstyle (All the missing docs).
+    "CPY", # flake8-copyright (Missing copyright declarations).
+]
+
+# Enable preview features.
+preview = true
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+docstring-code-line-length = 88
+
+docstring-code-format = true
+
+line-ending = "native"
+
+# Enable preview style formatting.
+preview = true

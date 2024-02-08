@@ -1,6 +1,8 @@
 .DS_Store
 coverage
 junit.xml
+format_output.txt
+lint_output.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pythonvanilla,jupyternotebooks,visualstudiocode,jetbrains
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pythonvanilla,jupyternotebooks,visualstudiocode,jetbrains
