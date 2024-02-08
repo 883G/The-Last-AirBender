@@ -19,6 +19,10 @@ ignore = [
 # Enable preview features.
 preview = true
 
+[lint.per-file-ignores]
+"test/*" = ["S101", # assert
+]
+
 [format]
 # Like Black, use double quotes for strings.
 quote-style = "double"
