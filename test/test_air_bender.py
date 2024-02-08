@@ -67,6 +67,6 @@ class TestAirBender:
         aang = AirBender("Aang", 90)
         captured_out = io.StringIO()
         sys.stdout = captured_out
-        aang.use_airbending()
+        aang.bend()
         sys.stdout = sys.__stdout__
         assert captured_out.getvalue() == "Aang is using his airbending skill!\n"
