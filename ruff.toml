@@ -12,15 +12,17 @@ target-version = "py311"
 select = ["ALL"]
 ignore = [
     "N999", # invalid-module-name (The Last Airbender is not a valid module name).
-    "D", # pydocstyle (All the missing docs).
-    "CPY", # flake8-copyright (Missing copyright declarations).
+    "D",    # pydocstyle (All the missing docs).
+    "CPY",  # flake8-copyright (Missing copyright declarations).
 ]
 
 # Enable preview features.
 preview = true
 
 [lint.per-file-ignores]
-"test/*" = ["S101", # assert
+"test/*" = [
+    "S101",   # assert
+    "FBT001", # boolean-type-hint-positional-argument
 ]
 
 [format]
