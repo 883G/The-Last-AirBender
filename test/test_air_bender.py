@@ -7,7 +7,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from tlab.air_bender import AirBender
-from tlab.exceptions import InvalidPowerType, InvalidPowerValue
+from tlab.exceptions import InvalidPowerTypeError, InvalidPowerValueError
 
 from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
 
@@ -37,7 +37,7 @@ def test_ctor_requires_power_of_positive_int_and_fails_on_negetive_int(
 ) -> None:
     # Act & Assert.
     with pytest.raises(
-        InvalidPowerValue,
+        InvalidPowerValueError,
         match="Power level must be a positive integer",
     ):
         AirBender("Aang", power)
@@ -56,7 +56,7 @@ def test_ctor_requires_power_of_positive_int_and_failes_on_non_int(
 ) -> None:
     # Act & Assert.
     with pytest.raises(
-        InvalidPowerType,
+        InvalidPowerTypeError,
         match="Power level must be a positive integer",
     ):
         AirBender("Aang", power)
