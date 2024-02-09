@@ -16,6 +16,8 @@ from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
     name=st.text(),
     power=POSITIVE_INTEGERS,
 )
+@example(name="Aang", power=1)
+@example(name="Aang", power=0)
 def test_ctor_sets_properties_on_valid_values(
     name: str,
     power: int,
@@ -51,6 +53,8 @@ def test_ctor_requires_power_of_positive_int_and_fails_on_negetive_int(
         st.text(),
     ),
 )
+@example(power=True)
+@example(power=False)
 def test_ctor_requires_power_of_positive_int_and_failes_on_non_int(
     power: str | bool | float | Decimal,
 ) -> None:
