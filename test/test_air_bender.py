@@ -1,6 +1,5 @@
-import io
-import sys
 from decimal import Decimal
+from logging import INFO, LogRecord
 
 import pytest
 from hypothesis import example, given
@@ -139,11 +138,20 @@ def test_power_setter_failes_on_invalid_type(
         aang.power = new_power
 
 
-def test_can_use_airbending() -> None:
-    # TODO(avihais12344): switch to caplog and logging.
+def test_can_use_airbending(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    # Arrange.
+    caplog.clear()
+    caplog.set_level(INFO)
     aang = AirBender("Aang", 90)
-    captured_out = io.StringIO()
-    sys.stdout = captured_out
+
+    # Act.
     aang.bend()
-    sys.stdout = sys.__stdout__
-    assert captured_out.getvalue() == "Aang is using his airbending skill!\n"
+
+    # Assert.
+    assert len(caplog.records) == 1
+    log_record: LogRecord = caplog.records[0]
+    assert log_record.levelname == "INFO"
+    assert log_record.message == "Aang is using his airbending skill!"
+
