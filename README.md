@@ -19,11 +19,11 @@
 
 Dive into the world of Avatar: The Last Air Bender
 and learn Python through elemental bending!
-Create classes for Waterbending, Firebending, Earthbending, and Airbending,
+Create classes for
+Waterbending, Firebending, Earthbending, and Airbending,
 each with unique abilities.
 Your journey will involve mastering Python and OOP concepts, and
 passing tests inspired by the beloved series.
-
 
 ## Learning Goals
 
