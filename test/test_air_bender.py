@@ -154,4 +154,3 @@ def test_can_use_airbending(
     log_record: LogRecord = caplog.records[0]
     assert log_record.levelno == INFO
     assert log_record.message == "Aang is using his airbending skill!"
-
