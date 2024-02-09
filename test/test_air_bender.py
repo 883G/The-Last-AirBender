@@ -69,7 +69,9 @@ def test_ctor_requires_power_of_positive_int_and_failes_on_non_int(
 @given(
     new_name=st.text(),
 )
-def test_name_setter_on_valid_value(new_name: str) -> None:
+def test_name_setter_on_valid_value(
+    new_name: str,
+) -> None:
     # Arrange.
     aang = AirBender("Aang", 90)
 
@@ -83,7 +85,9 @@ def test_name_setter_on_valid_value(new_name: str) -> None:
 @given(
     new_power=POSITIVE_INTEGERS,
 )
-def test_power_setter_on_valid_value(new_power: int) -> None:
+def test_power_setter_on_valid_value(
+    new_power: int,
+) -> None:
     # Arrange.
     aang = AirBender("Aang", 90)
 
@@ -97,7 +101,9 @@ def test_power_setter_on_valid_value(new_power: int) -> None:
 @given(
     new_power=NEGETIVE_INTEGERS,
 )
-def test_power_setter_failes_on_invalid_value(new_power: int) -> None:
+def test_power_setter_failes_on_invalid_value(
+    new_power: int,
+) -> None:
     # Arrange.
     aang = AirBender("Aang", 90)
 
