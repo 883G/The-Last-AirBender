@@ -120,6 +120,9 @@ nox
 what it does is that it runs the `session`s defined at the
 `noxfile.py` file, and there it's defined to run the tests.
 
+You can view and/or use the outputs of the tests
+from the created files or from your shell's `stdout`.
+
 #### It doesn't work / there's a problem
 
 If you think there's a problem with the tests, or there's
