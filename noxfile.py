@@ -23,6 +23,7 @@ nox.options.reuse_existing_virtualenvs = True
 def test(
     session: nox.Session,
 ) -> None:
+    session.debug("Running The tests.")
     junit_file: Path = _PROJECT_ROOT / "junit.xml"
     session.run(
         "coverage",
@@ -37,12 +38,14 @@ def test(
         "--show-capture=all",
         f"--junit-xml={junit_file!s}",
     )
+    session.debug("Ran The tests.")
 
 
 @nox.session(tags=["test", "ci"])
 def coverage(
     session: nox.Session,
 ) -> None:
+    session.debug("Creating coverage report.")
     html_dir: Path = (_PROJECT_ROOT / "html_cov").resolve()
     xml_cov: Path = (_PROJECT_ROOT / "coverage.xml").resolve()
 
@@ -66,12 +69,14 @@ def coverage(
         f"--data-file={_COVERAGE_FILE!s}",
         f"--fail-under={_MIN_COVERAGE_PRECENT!s}",
     )
+    session.debug("Finished creating coverage report.")
 
 
 @nox.session(tags=["lint", "ci"])
 def lint(
     session: nox.Session,
 ) -> None:
+    session.debug("Linting the code with Ruff.")
     session.run(
         "ruff",
         "check",
@@ -80,13 +85,19 @@ def lint(
         f"--output-format={_RUFF_OUTPUT_FORMAT!s}",
         f"--output-file={_RUFF_OUTPUT_FILE!s}",
     )
+    session.debug("Linted the code with Ruff.")
 
 
 @nox.session(tags=["lint", "ci"])
 def check_format(
     session: nox.Session,
 ) -> None:
+    session.debug("Checking the format of the code with Ruff.")
     format_output_file: Path = (_PROJECT_ROOT / "format_output.txt").resolve()
+    session.debug(
+        "Writing the foramt check with ruff output to: "
+        f'"{format_output_file!s}".',
+    )
     with format_output_file.open(mode="w", encoding="UTF8") as output_file:
         session.run(
             "ruff",
@@ -97,3 +108,4 @@ def check_format(
             f"{_PROJECT_ROOT!s}",
             stdout=output_file,
         )
+        session.debug("Checked the format of the code with Ruff.")
