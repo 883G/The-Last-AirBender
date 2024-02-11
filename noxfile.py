@@ -1,3 +1,4 @@
+from collections.abc import Collection
 from pathlib import Path
 
 import nox
@@ -19,6 +20,10 @@ nox.options.default_venv_backend = "none"
 nox.options.reuse_existing_virtualenvs = True
 
 
+def get_python_prefix() -> Collection[str]:
+    return ["python", "-m"]
+
+
 @nox.session(tags=["test", "ci"])
 def test(
     session: nox.Session,
@@ -26,6 +31,8 @@ def test(
     session.debug("Running The tests.")
     junit_file: Path = _PROJECT_ROOT / "junit.xml"
     session.run(
+        # Added python -m as it did problems on windows.
+        *get_python_prefix(),
         "coverage",
         "run",
         f"--data-file={_COVERAGE_FILE!s}",
@@ -50,6 +57,8 @@ def coverage(
     xml_cov: Path = (_PROJECT_ROOT / "coverage.xml").resolve()
 
     session.run(
+        # Added python -m as it did problems on windows.
+        *get_python_prefix(),
         "coverage",
         "html",
         f"--directory={html_dir!s}",
@@ -57,6 +66,8 @@ def coverage(
         f"--data-file={_COVERAGE_FILE!s}",
     )
     session.run(
+        # Added python -m as it did problems on windows.
+        *get_python_prefix(),
         "coverage",
         "xml",
         "-o",
@@ -64,6 +75,8 @@ def coverage(
         f"--data-file={_COVERAGE_FILE!s}",
     )
     session.run(
+        # Added python -m as it did problems on windows.
+        *get_python_prefix(),
         "coverage",
         "report",
         f"--data-file={_COVERAGE_FILE!s}",
@@ -95,8 +108,7 @@ def check_format(
     session.debug("Checking the format of the code with Ruff.")
     format_output_file: Path = (_PROJECT_ROOT / "format_output.txt").resolve()
     session.debug(
-        "Writing the foramt check with ruff output to: "
-        f'"{format_output_file!s}".',
+        f'Writing the foramt check with ruff output to: "{format_output_file!s}".',
     )
     with format_output_file.open(mode="w", encoding="UTF8") as output_file:
         session.run(
