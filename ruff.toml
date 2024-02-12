@@ -26,6 +26,10 @@ preview = true
     "FBT001", # boolean-type-hint-positional-argument
 ]
 
+"tlab/earth_bender.py" = [
+    "T201", # print
+]
+
 [format]
 # Like Black, use double quotes for strings.
 quote-style = "double"
