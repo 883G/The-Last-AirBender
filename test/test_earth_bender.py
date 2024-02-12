@@ -1,5 +1,9 @@
+import io
 import os
+import re
+import sys
 from decimal import Decimal
+from typing import AnyStr
 from unittest.mock import patch
 
 import pytest
@@ -10,6 +14,11 @@ from tlab.earth_bender import EarthBender
 from tlab.exceptions import InvalidPowerTypeError, InvalidPowerValueError
 
 from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
+
+_ROCK_ATTACK_PATTERN: re.Pattern[AnyStr] = re.compile(
+    r"rock ball",
+    re.IGNORECASE,
+)
 
 
 @given(
@@ -139,5 +148,32 @@ def test_power_setter_failes_on_invalid_type(
         toph.power = new_power
 
 
-def test_can_use_airbending() -> None:
-    raise NotImplementedError("Need to implement.")
+@given(
+    power=POSITIVE_INTEGERS,
+    rock_ball_attack_str=st.from_regex(
+        _ROCK_ATTACK_PATTERN,
+        fullmatch=True,
+    ),
+)
+def test_can_use_earthbending_rock_ball(
+    rock_ball_attack_str: str,
+    power: int,
+) -> None:
+    # Arrange.
+    toph = EarthBender("Toph", power)
+    env_mock = patch.dict(
+        os.environ,
+        {"EARTH_ATTACK": rock_ball_attack_str},
+    )
+    stdout_mock = patch.object(
+        sys,
+        "stdout",
+        new=io.StringIO(),
+    )
+
+    # Act.
+    with env_mock, stdout_mock:
+        toph.bend()
+
+    # Assert.
+    assert stdout_mock.new.getvalue() == f"rock ball with power: {power:^2}."
