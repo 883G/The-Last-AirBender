@@ -178,3 +178,38 @@ def test_can_use_earthbending_rock_ball(
 
     # Assert.
     assert stdout_mock.new.getvalue() == f"rock ball with power: {power:^2}."
+
+
+@given(
+    earth_attack=st.text(
+        alphabet=st.characters(
+            codec="UTF",
+            # Removed wierd categories to avoid wierd errors
+            # when patching envs.
+            exclude_categories={
+                "Cc",
+            },
+        ),
+    ).filter(
+        lambda earth_attack: not re.fullmatch(
+            _ROCK_ATTACK_PATTERN,
+            earth_attack,
+        ),
+    ),
+)
+def test_can_use_earthbending_other_than_rock_ball(earth_attack: str) -> None:
+    # Arrange.
+    toph = EarthBender("Toph", 66)
+    env_mock = patch.dict(
+        os.environ,
+        {"EARTH_ATTACK": earth_attack},
+        clear=True,
+    )
+
+    # Act.
+    with env_mock:
+        toph.bend()
+        result = os.environ["EARTH_ATTACK"]
+
+    # Assert.
+    assert result == "No Rock Ball :("
