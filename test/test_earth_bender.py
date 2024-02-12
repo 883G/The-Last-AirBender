@@ -1,5 +1,6 @@
+import os
 from decimal import Decimal
-from logging import INFO, LogRecord
+from unittest.mock import patch
 
 import pytest
 from hypothesis import example, given
@@ -22,12 +23,12 @@ def test_ctor_sets_properties_on_valid_values(
     power: int,
 ) -> None:
     # Act.
-    aang = EarthBender(name, power)
+    toph = EarthBender(name, power)
 
     # Assert.
-    assert aang.skill == "Airbending"
-    assert aang.name == name
-    assert aang.power == power
+    assert toph.skill == "Airbending"
+    assert toph.name == name
+    assert toph.power == power
 
 
 @given(
@@ -72,13 +73,13 @@ def test_name_setter_on_valid_value(
     new_name: str,
 ) -> None:
     # Arrange.
-    aang = EarthBender("Toph", 90)
+    toph = EarthBender("Toph", 90)
 
     # Act.
-    aang.name = new_name
+    toph.name = new_name
 
     # Assert.
-    assert aang.name == new_name
+    assert toph.name == new_name
 
 
 @given(
@@ -88,13 +89,13 @@ def test_power_setter_on_valid_value(
     new_power: int,
 ) -> None:
     # Arrange.
-    aang = EarthBender("Toph", 90)
+    toph = EarthBender("Toph", 90)
 
     # Act.
-    aang.power = new_power
+    toph.power = new_power
 
     # Assert.
-    assert aang.power == new_power
+    assert toph.power == new_power
 
 
 @given(
@@ -104,14 +105,14 @@ def test_power_setter_failes_on_invalid_value(
     new_power: int,
 ) -> None:
     # Arrange.
-    aang = EarthBender("Toph", 90)
+    toph = EarthBender("Toph", 90)
 
     # Act & assert.
     with pytest.raises(
         InvalidPowerValueError,
         match="Power level must be a positive integer",
     ):
-        aang.power = new_power
+        toph.power = new_power
 
 
 @given(
@@ -128,14 +129,14 @@ def test_power_setter_failes_on_invalid_type(
     new_power: str | bool | float | Decimal,
 ) -> None:
     # Arrange.
-    aang = EarthBender("Toph", 90)
+    toph = EarthBender("Toph", 90)
 
     # Act & assert.
     with pytest.raises(
         InvalidPowerTypeError,
         match="Power level must be a positive integer",
     ):
-        aang.power = new_power
+        toph.power = new_power
 
 
 def test_can_use_airbending() -> None:
