@@ -164,6 +164,7 @@ def test_can_use_earthbending_rock_ball(
     env_mock = patch.dict(
         os.environ,
         {"EARTH_ATTACK": rock_ball_attack_str},
+        clear=True,
     )
     stdout_mock = patch.object(
         sys,
