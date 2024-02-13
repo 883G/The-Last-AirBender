@@ -111,7 +111,6 @@ def test_power_setter_failes_on_invalid_value(
     zuko = FireBender("Zuko", 90)
 
     # Act & assert.
-
     with pytest.raises(
         InvalidPowerValueError,
         match="Power level must be a positive integer",
@@ -136,7 +135,6 @@ def test_power_setter_failes_on_invalid_type(
     zuko = FireBender("Zuko", 90)
 
     # Act & assert.
-
     with pytest.raises(
         InvalidPowerTypeError,
         match="Power level must be a positive integer",
