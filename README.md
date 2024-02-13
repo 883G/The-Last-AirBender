@@ -58,6 +58,7 @@ as explained [here](#running-the-tests).
 
 Along the way,
 feel free to add your own creative features to enhance the experience.
+For example: a base class, protected methods, or more.
 But you **must not** break and/or change the tests, configs,
 the `noxfile.py`, and the `Poetry` files.
 
