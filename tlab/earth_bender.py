@@ -12,7 +12,7 @@ class EarthBender:
         raise NotImplementedError("You Should Implement this method")
 
     @name.setter
-    def set_name(self, name: str) -> None:
+    def name(self, name: str) -> None:
         raise NotImplementedError("You Should Implement this method")
 
     @property
@@ -20,7 +20,7 @@ class EarthBender:
         raise NotImplementedError("You Should Implement this method")
 
     @power.setter
-    def set_power(self, power: int) -> None:
+    def power(self, power: int) -> None:
         raise NotImplementedError("You Should Implement this method")
 
     @property
