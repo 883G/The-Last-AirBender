@@ -35,7 +35,7 @@ def test_ctor_sets_properties_on_valid_values(
     toph = EarthBender(name, power)
 
     # Assert.
-    assert toph.skill == "Airbending"
+    assert toph.skill == "Earthbending"
     assert toph.name == name
     assert toph.power == power
 
