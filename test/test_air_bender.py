@@ -15,7 +15,6 @@ from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
     name=st.text(),
     power=POSITIVE_INTEGERS,
 )
-# Testing those cases due to: https://stackoverflow.com/a/37888668/14030123
 @example(name="Aang", power=1)
 @example(name="Aang", power=0)
 def test_ctor_sets_properties_on_valid_values(
@@ -53,7 +52,6 @@ def test_ctor_requires_power_of_positive_int_and_fails_on_negetive_int(
         st.text(),
     ),
 )
-# Testing those cases due to: https://stackoverflow.com/a/37888668/14030123
 @example(power=True)
 @example(power=False)
 def test_ctor_requires_power_of_positive_int_and_failes_on_non_int(
@@ -86,7 +84,6 @@ def test_name_setter_on_valid_value(
 @given(
     new_power=POSITIVE_INTEGERS,
 )
-# Testing those cases due to: https://stackoverflow.com/a/37888668/14030123
 @example(new_power=1)
 @example(new_power=0)
 def test_power_setter_on_valid_value(
@@ -127,7 +124,6 @@ def test_power_setter_failes_on_invalid_value(
         st.text(),
     ),
 )
-# Testing those cases due to: https://stackoverflow.com/a/37888668/14030123
 @example(new_power=True)
 @example(new_power=False)
 def test_power_setter_failes_on_invalid_type(
