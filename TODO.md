@@ -1,0 +1,2 @@
+- Make the Fire Bender delete a file when bending with enough six.
+- Make the Earth Bender Creating a file with a random size.
