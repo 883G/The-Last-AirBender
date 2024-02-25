@@ -2,7 +2,6 @@ import os
 from decimal import Decimal
 from unittest.mock import patch
 
-import httpx
 import pytest
 from hypothesis import example, given
 from hypothesis import strategies as st
