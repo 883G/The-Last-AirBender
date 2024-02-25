@@ -1,9 +1,13 @@
+from collections.abc import Callable
+
+
 class FireBender:
     # Return type is None due to: https://peps.python.org/pep-0484/#the-meaning-of-annotations
     def __init__(
         self,
         name: str,
         power: int,
+        get_number_of_6: Callable[[], int] = lambda: 6,
     ) -> None:
         raise NotImplementedError("You Should Implement this method")
 

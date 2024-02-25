@@ -1,5 +1,8 @@
+import os
 from decimal import Decimal
+from unittest.mock import patch
 
+import httpx
 import pytest
 from hypothesis import example, given
 from hypothesis import strategies as st
@@ -142,5 +145,55 @@ def test_power_setter_failes_on_invalid_type(
         zuko.power = new_power
 
 
-def test_can_use_airbending() -> None:
-    raise NotImplementedError("TODO: Need to implement.")
+@given(
+    number_of_six=st.integers(
+        max_value=5,
+    ),
+)
+def test_can_use_firebending_on_low_six(number_of_six: int) -> None:
+    # Arrange.
+    zuko = FireBender(
+        "Zuko",
+        90,
+        lambda: number_of_six,
+    )
+    env_mock = patch.dict(
+        os.environ,
+        {},
+        clear=True,
+    )
+
+    # Act.
+    with env_mock:
+        zuko.bend()
+        result = os.environ["MAMAS"]
+
+    # Assert
+    assert result == "Not Enough 6"
+
+
+@given(
+    number_of_six=st.integers(
+        min_value=6,
+    ),
+)
+def test_can_use_firebending_on_high_six(number_of_six: int) -> None:
+    # Arrange.
+    zuko = FireBender(
+        "Zuko",
+        90,
+        lambda: number_of_six,
+    )
+    env_mock = patch.dict(
+        os.environ,
+        {},
+        clear=True,
+    )
+
+    # Act.
+    with env_mock:
+        zuko.bend()
+        result = os.environ["MAMAS"]
+
+    # Assert
+    assert result == str(6 * number_of_six)
