@@ -1,8 +1,6 @@
 import random
 from decimal import Decimal
-from pathlib import Path
-from typing import TYPE_CHECKING
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 
 import pytest
 from hypothesis import example, given
@@ -12,9 +10,6 @@ from tlab.exceptions import InvalidPowerTypeError, InvalidPowerValueError
 from tlab.fire_bender import FireBender
 
 from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
-
-if TYPE_CHECKING:
-    from collections.abc import Sequence
 
 
 @given(
@@ -149,47 +144,80 @@ def test_power_setter_failes_on_invalid_type(
         zuko.power = new_power
 
 
-@given(
-    st.sampled_from(
-        [
-            Path(".gitignore"),
-            Path("README.md"),
-            Path("My-File"),
-        ],
-    ),
-)
-def test_can_use_firebending_on_normal_condition(
-    expected_file_to_be_deleted: Path,
-) -> None:
+def test_can_use_firebending_on_sozins_comet() -> None:
     # Arrange.
-    dummy_file_iterable: Sequence[Path] = (expected_file_to_be_deleted,)
+    expected_value = 6
     mock_random = Mock(
         name="mock_random",
         spec_set=random.Random,
     )
-    mock_random.choice.return_value = expected_file_to_be_deleted
-    unlink = patch.object(
-        Path,
-        "unlink",
-        # Thanks to: https://stackoverflow.com/a/20258218/14030123
-        autospec=True,
-    )
-
+    mock_random.randint.return_value = expected_value
     zuko = FireBender(
         "Zuko",
         90,
-        dummy_file_iterable,
         mock_random,
     )
 
     # Act.
-    with unlink as mock_unlink:
+    with pytest.raises(SystemExit) as exec_info:
         zuko.bend()
 
     # Assert.
-    mock_random.choice.assert_called_once_with(
-        dummy_file_iterable,
+    mock_random.randint.assert_called_once_with(
+        0,
+        6,
     )
-    mock_unlink.assert_called_once_with(
-        expected_file_to_be_deleted,
+    assert exec_info.value.code == expected_value
+
+
+def test_can_use_firebending_on_eclipse() -> None:
+    # Arrange.
+    mock_random = Mock(
+        name="mock_random",
+        spec_set=random.Random,
+    )
+    mock_random.randint.return_value = 0
+    zuko = FireBender(
+        "Zuko",
+        90,
+        mock_random,
+    )
+
+    # Act.
+    zuko.bend()
+
+    # Assert.
+    mock_random.randint.assert_called_once_with(
+        0,
+        6,
+    )
+    assert zuko.name == "dead"
+
+
+@given(
+    generated_value=st.integers(
+        min_value=1,
+        max_value=5,
+    ),
+)
+def test_can_use_firebending_on_regular_day(generated_value: int) -> None:
+    # Arrange.
+    mock_random = Mock(
+        name="mock_random",
+        spec_set=random.Random,
+    )
+    mock_random.randint.return_value = generated_value
+    zuko = FireBender(
+        "Zuko",
+        90,
+        mock_random,
+    )
+
+    # Act.
+    zuko.bend()
+
+    # Assert.
+    mock_random.randint.assert_called_once_with(
+        0,
+        6,
     )

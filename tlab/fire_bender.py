@@ -1,6 +1,4 @@
 import random
-from collections.abc import Sequence
-from pathlib import Path
 
 
 class FireBender:
@@ -9,8 +7,7 @@ class FireBender:
         self,
         name: str,
         power: int,
-        files_to_delete_from: Sequence[Path] | None = None,
-        random_generator: random.Random | None = None,
+        random_generator: random.Random = random,
     ) -> None:
         raise NotImplementedError("You Should Implement this method")
 
