@@ -1,3 +1,1 @@
-- Make the Fire Bender delete a random file.
-    - Need to create tests for edge cases and for the c'tor.
-- Make the Earth Bender Creating a file with a random size.
+- Make the Earth Bender Creating a file according to the attack.
