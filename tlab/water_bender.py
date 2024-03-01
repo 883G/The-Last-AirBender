@@ -1,9 +1,13 @@
+from webbrowser import BaseBrowser
+
+
 class WaterBender:
     # Return type is None due to: https://peps.python.org/pep-0484/#the-meaning-of-annotations
     def __init__(
         self,
         name: str,
         power: int,
+        browser: BaseBrowser | None = None
     ) -> None:
         raise NotImplementedError("You Should Implement this method")
 
