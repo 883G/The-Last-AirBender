@@ -1,1 +1,2 @@
-- Make the Earth Bender Creating a file according to the attack.
+- Check if you can implement water bender.
+- Create strategy for environment variables.
