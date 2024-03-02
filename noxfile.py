@@ -43,6 +43,8 @@ def test(
         "--full-trace",
         "--showlocals",
         "--show-capture=all",
+        "-n",
+        "auto",
         f"--junit-xml={junit_file!s}",
     )
     session.debug("Ran The tests.")
