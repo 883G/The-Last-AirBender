@@ -28,7 +28,7 @@ def test_ctor_sets_properties_on_valid_values(
 
     # Assert.
 
-    assert katara.skill == "Firebending"
+    assert katara.skill == "Waterbending"
     assert katara.name == name
     assert katara.power == power
 
