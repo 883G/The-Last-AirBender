@@ -13,7 +13,11 @@ from hypothesis import strategies as st
 from tlab.earth_bender import EarthBender
 from tlab.exceptions import InvalidPowerTypeError, InvalidPowerValueError
 
-from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
+from .conftest import (
+    ENVIRONMENT_VARIABLES,
+    NEGETIVE_INTEGERS,
+    POSITIVE_INTEGERS,
+)
 
 _ROCK_ATTACK_PATTERN: re.Pattern[AnyStr] = re.compile(
     r"rock ball",
@@ -183,16 +187,7 @@ def test_can_use_earthbending_rock_ball(
 
 
 @given(
-    earth_attack=st.text(
-        alphabet=st.characters(
-            codec="UTF",
-            # Removed wierd categories to avoid wierd errors
-            # when patching envs.
-            exclude_categories={
-                "Cc",
-            },
-        ),
-    ).filter(
+    earth_attack=ENVIRONMENT_VARIABLES.filter(
         lambda earth_attack: not re.fullmatch(
             _ROCK_ATTACK_PATTERN,
             earth_attack,

@@ -10,7 +10,11 @@ from hypothesis import strategies as st
 from tlab.exceptions import InvalidPowerTypeError, InvalidPowerValueError
 from tlab.water_bender import WaterBender
 
-from .conftest import NEGETIVE_INTEGERS, POSITIVE_INTEGERS
+from .conftest import (
+    ENVIRONMENT_VARIABLES,
+    NEGETIVE_INTEGERS,
+    POSITIVE_INTEGERS,
+)
 
 
 @given(
@@ -203,8 +207,8 @@ def test_can_use_waterbending_on_full_moon() -> None:
         "https://www.wikiwand.com/en/6",
     )
 
-# TODO: create env string strategy.
-@given(moon_env_value=st.text())
+
+@given(moon_env_value=ENVIRONMENT_VARIABLES)
 def test_can_use_waterbending_on_no_moon(
     moon_env_value: str,
 ) -> None:
