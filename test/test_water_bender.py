@@ -208,7 +208,11 @@ def test_can_use_waterbending_on_full_moon() -> None:
     )
 
 
-@given(moon_env_value=ENVIRONMENT_VARIABLES)
+@given(
+    moon_env_value=ENVIRONMENT_VARIABLES.filter(
+        lambda value: value != "FULL",
+    ),
+)
 def test_can_use_waterbending_on_no_moon(
     moon_env_value: str,
 ) -> None:
