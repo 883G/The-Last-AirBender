@@ -1,2 +1,0 @@
-- Check if you can implement water bender.
-- Create strategy for environment variables.
