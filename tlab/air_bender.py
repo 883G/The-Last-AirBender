@@ -27,7 +27,6 @@ class AirBender:
     def power(
         self: Self,
     ) -> int:
-    def power(self) -> int:
         raise NotImplementedError("You Should Implement this method")
 
     @power.setter

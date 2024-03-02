@@ -27,17 +27,22 @@ class WaterBender:
     def power(
         self: Self,
     ) -> int:
+        raise NotImplementedError("You Should Implement this method")
 
     @power.setter
     def power(
         self: Self,
         power: int,
     ) -> None:
+        raise NotImplementedError("You Should Implement this method")
 
     @property
     def skill(
         self: Self,
     ) -> str:
+        raise NotImplementedError("You Should Implement this method")
+
     def bend(
         self: Self,
     ) -> None:
+        raise NotImplementedError("You Should Implement this method")
