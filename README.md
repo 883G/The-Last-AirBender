@@ -113,7 +113,8 @@ you should talk with your mentor first!
 ### Running the tests
 
 Now, to run the tests and check if you have finished the exercise,
-you just need to run `nox`:
+you just need to run `nox`
+(from the shell you have activated [here](#creating-a-new-venv)):
 
 ```bash
 nox
