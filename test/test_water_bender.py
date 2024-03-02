@@ -205,7 +205,9 @@ def test_can_use_waterbending_on_full_moon() -> None:
 
 # TODO: create env string strategy.
 @given(moon_env_value=st.text())
-def test_can_use_waterbending_on_no_moon(moon_env_value: str,) -> None:
+def test_can_use_waterbending_on_no_moon(
+    moon_env_value: str,
+) -> None:
     # Arrange.
     mock_browser = Mock(
         name="mock_browser",
@@ -234,7 +236,11 @@ def test_can_use_waterbending_on_no_moon(moon_env_value: str,) -> None:
     )
 
 
-@given(power=st.integers(min_value=1))
+@given(
+    power=st.integers(
+        min_value=1,
+    ),
+)
 def test_can_use_waterbending_on_no_webbrowser_and_non_zero_power(power: int) -> None:
     # Arrange.
     katara = WaterBender(
