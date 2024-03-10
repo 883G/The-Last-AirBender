@@ -30,7 +30,7 @@ passing tests inspired by the beloved series.
 - Create and instantiate classes in Python.
 - Build methods that perform functions tailored to their unique objects.
 - Read Tests to understand Python.
-- Use the `property()` function to create properties and validate input.
+- Use the `property()` function and getters and setters to create properties and validate input.
 - Learn test-driven development,
 and enhance your classes with creative features to master the art of OOP in the Avatar world.
 - Get to know the big world of python.
@@ -81,20 +81,20 @@ which you can can download from
 
 ### Creating a new venv
 
-Run the command:
+1. Run the command:
 
 ```bash
 poetry install
 ```
 
-To create a new venv with all the project's dependencies.
+2. To create a new venv with all the project's dependencies.
 You can activate the venv's shell with the command:
 
 ```bash
 poetry shell
 ```
 
-If it doesn't work, just activate the venv yourself.
+3. If it doesn't work, just activate the venv yourself.
 You can read about it
 [here](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments).
 
@@ -135,8 +135,5 @@ you should talk with your mentor.
 #### View the test coverage report
 
 You can view the test coverage report as a nice web page
-at the generated file:
+at the generated file: [html_cov/index.html](./html_cov/index.html)
 
-```path
-html_cov/index.html
-```
